@@ -45,6 +45,75 @@ def save_data(data):
     with open(cpd_file, "w") as f:
         json.dump(data, f, indent=4)
 
+def load_users():
+    with open('users.json', 'r') as file:
+        return json.load(file)
+
+def save_users(users):
+    with open('users.json', 'w') as file:
+        json.dump(users, file, indent=4)
+
+def add_user(username, password, full_name, user_type):
+    users = load_users()
+    if any(user['username'] == username for user in users):
+        return "User already exists"
+    
+    new_user = {
+        "username": username,
+        "password": password,
+        "full_name": full_name,
+        "user_type": user_type
+    }
+    users.append(new_user)
+    save_users(users)
+    return "User added successfully"
+
+def edit_user(username, password, full_name, user_type):
+    users = load_users()
+    for user in users:
+        if user['username'] == username:
+            user['password'] = password
+            user['full_name'] = full_name
+            user['user_type'] = user_type
+            save_users(users)
+            return "User updated successfully"
+    
+    return "User not found"
+
+def manage_users():
+    st.title("Manage Users")
+
+    # Load users for dropdown
+    users = load_users()
+    usernames = [user['username'] for user in users]
+
+    # Form for adding a new user
+    st.header("Add New User")
+    with st.form(key='add_user_form'):
+        add_username = st.text_input("Username")
+        add_password = st.text_input("Password", type='password')
+        add_full_name = st.text_input("Full Name")
+        add_user_type = st.selectbox("User Type", ["user", "admin"])
+        add_user_button = st.form_submit_button("Add User")
+
+        if add_user_button:
+            result = add_user(add_username, add_password, add_full_name, add_user_type)
+            st.success(result)
+
+    # Form for editing an existing user
+    st.header("Edit Existing User")
+    with st.form(key='edit_user_form'):
+        edit_username = st.selectbox("Select Username to Edit", usernames)
+        edit_password = st.text_input("New Password", type='password')
+        edit_full_name = st.text_input("New Full Name")
+        edit_user_type = st.selectbox("New User Type", ["user", "admin"])
+        edit_user_button = st.form_submit_button("Edit User")
+
+        if edit_user_button:
+            result = edit_user(edit_username, edit_password, edit_full_name, edit_user_type)
+            st.success(result)
+
+
 # Login Page
 def login():
     st.title("Login to myCPD Portal")
@@ -410,12 +479,12 @@ def main():
         st.sidebar.title("Navigation")
         
         if st.session_state.user_type == 'admin':
-            page = st.sidebar.selectbox("Select Page", ["Dashboard"])
+            page = st.sidebar.selectbox("Select Page", ["Dashboard", "Manage Users"])
 
             if page == "Dashboard":
                 admin_dashboard()
-            elif page == "Log CPD":
-                log_or_edit_cpd()
+            elif page == "Manage Users":
+                manage_users()
             elif page == "Edit CPD":
                 edit_cpd()
         else:
