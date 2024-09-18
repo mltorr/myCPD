@@ -1,0 +1,20 @@
+[
+    {
+        "username": "mark.torres",
+        "password": "pass123",
+        "full_name": "Mark Torres",
+        "user_type": "user"
+    },
+    {
+        "username": "chasey.sison",
+        "password": "pass123",
+        "full_name": "Chasey Sison",
+        "user_type": "user"
+    },
+    {
+        "username": "alex.chia",
+        "password": "pass123",
+        "full_name": "Alex Chia",
+        "user_type": "admin"
+    }
+]

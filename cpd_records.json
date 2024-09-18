@@ -1,0 +1,38 @@
+[
+    {
+        "Username": "mark.torres",
+        "Title": "[GST] Supplies Training",
+        "Type": "Webinar",
+        "Hours": 2.0,
+        "Date": "2024-08-30",
+        "Organization": "BTG International",
+        "Description": "In Australia, GST (Goods and Services Tax) applies to most goods and services sold or consumed. However, the term \"GST supplies\" refers to the specific nature of these supplies and how they are treated under the GST system.",
+        "Learning outcomes": "Learn about the ff:\nTaxable Supplies:\n\nThese are goods and services on which GST is charged. When you make a taxable supply, you must include GST in the price (currently 10%) and remit this amount to the Australian Tax Office (ATO). Businesses registered for GST can claim credits for the GST included in their business purchases (known as input tax credits).\nGST-Free Supplies:\n\nSome goods and services are GST-free, meaning no GST is charged. Examples include basic food items, some medical services, and educational courses. Businesses providing GST-free supplies can still claim input tax credits on purchases related to those supplies.\nInput Taxed Supplies:\n\nCertain supplies, like financial services and residential rent, are classified as input taxed. No GST is charged on these supplies, but businesses cannot claim input tax credits for purchases related to making these supplies.",
+        "Links": "https://btginternational666.sharepoint.com/sites/BTGCore/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FBTGCore%2FShared%20Documents%2F03%20Clients&viewid=d4e68b6d-5254-462e-806b-029d3ab64f45",
+        "Certificate": "Certificate.pdf"
+    },
+    {
+        "Username": "mark.torres",
+        "Title": "[GST] Imports and Exports",
+        "Type": "Training Video",
+        "Hours": 2.0,
+        "Date": "2024-09-16",
+        "Organization": "BTG International",
+        "Description": "GST treatment for goods and services imported into or exported from Australia.",
+        "Learning outcomes": "Learn about Special GST rules for low-value imported goods.\nLearn about Documentation and reporting obligations for cross-border transactions.",
+        "Links": "https://ws.onehub.com/home",
+        "Certificate": "Certificate.pdf"
+    },
+    {
+        "Username": "chasey.sison",
+        "Title": "[AI] Gemini Training",
+        "Type": "Seminar",
+        "Hours": 3.0,
+        "Date": "2024-07-01",
+        "Organization": "BTG International",
+        "Description": "How to use and navigate Gemini for Data Team use",
+        "Learning outcomes": "To learn about prompts and techniques in using Gemini",
+        "Links": "www.google.com",
+        "Certificate": "Certificate.pdf"
+    }
+]
