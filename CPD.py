@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-
+st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="wide", initial_sidebar_state="auto")
 
 # Initialize session state variables
 if 'authenticated' not in st.session_state:
@@ -118,7 +118,7 @@ def manage_users():
 
 # Login Page
 def login():
-    st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="centered", initial_sidebar_state="auto")
+
     st.title("Login to myCPD Portal")
 
     users = load_user_credentials()
@@ -141,7 +141,7 @@ def login():
 
 # Page to log new CPD's
 def log_or_edit_cpd(edit_mode=False, cpd_to_edit=None):
-    st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="centered", initial_sidebar_state="auto")
+
     if "username" not in st.session_state:
         st.error("No user is logged in. Please log in first.")
         return
@@ -223,7 +223,7 @@ def log_or_edit_cpd(edit_mode=False, cpd_to_edit=None):
 
 #Edit CPD entries
 def edit_cpd():
-    st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="centered", initial_sidebar_state="auto")
+
     st.title("Edit CPD Activity")
 
     data = load_data()
@@ -244,7 +244,7 @@ def edit_cpd():
 
 #Dashboard for Admin usertype users
 def admin_dashboard():
-    st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="centered", initial_sidebar_state="auto")
+
     st.title("Admin Dashboard")
 
     data = load_data()
@@ -307,7 +307,7 @@ def encode_image_to_base64(fig):
 
 # Dashboard Page for usertype = users
 def dashboard():
-    st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="wide", initial_sidebar_state="auto")
+
     st.title(f"Welcome {st.session_state.full_name}")
 
     data = load_data()  # Ensure this function is defined elsewhere
