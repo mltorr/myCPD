@@ -4,6 +4,8 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
+st.set_page_config(page_title="myCPD Portal", page_icon=None, layout="wide", initial_sidebar_state="auto")
+
 # Initialize session state variables
 if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
@@ -142,8 +144,8 @@ def log_or_edit_cpd(edit_mode=False, cpd_to_edit=None):
         st.error("No user is logged in. Please log in first.")
         return
 
-    username = st.session_state.username
-    st.title(f"Log CPD Activity for {username}")
+    full_name = st.session_state.full_name
+    st.title(f"Log CPD Activity for {full_name}")
 
     if edit_mode and cpd_to_edit:
         title = cpd_to_edit["Title"]
@@ -273,13 +275,22 @@ def admin_dashboard():
     user_only_df.rename(columns={'full_name': 'Name'}, inplace=True)
     st.table(user_only_df[['Name', 'Total CPD Hours', 'Target Hours', 'Percentage Completed']])
 
-def generate_pie_chart(cpd_by_type):
-    fig, ax = plt.subplots(figsize=(6, 6))
+def generate_pie_chart(cpd_by_type, background_color='#f9f9f9'):
+    fig, ax = plt.subplots(figsize=(6, 3))
+    
+    # Set the background color for the figure and the axis
+    fig.patch.set_facecolor(background_color)
+    ax.set_facecolor(background_color)
+    
     colors = plt.get_cmap('Set3')(range(len(cpd_by_type)))
-    ax.pie(cpd_by_type, labels=cpd_by_type.index, autopct='%1.1f%%', startangle=90, wedgeprops={'width': 0.5}, colors=colors)
-    ax.axis('equal')
+    ax.pie(cpd_by_type, labels=cpd_by_type.index, autopct='%1.1f%%', 
+           startangle=90, wedgeprops={'width': 0.5}, colors=colors)
+    
+    ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
     plt.tight_layout()
+    
     return fig
+
 
 def encode_image_to_base64(fig):
     import io
@@ -347,7 +358,7 @@ def dashboard():
 
 
 
-    st.subheader("CPD Records Summary")
+    st.title("CPD Activities")
     st.write(user_data[['Title', 'Type', 'Hours', 'Date', 'Organization', 'Description', 'Learning outcomes', 'Links']])
 
     # Include Font Awesome for icons
@@ -424,7 +435,7 @@ def dashboard():
     st.title("CPD Activities")
 
     # Number of columns for each row
-    num_cols = 2
+    num_cols = 3
     applist = st.container()
 
     # Assuming 'user_data' is the dataframe you're working with
